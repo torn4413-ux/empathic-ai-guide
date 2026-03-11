@@ -1,9 +1,11 @@
 import { Heart, Brain, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import FeatureCard from "@/components/FeatureCard";
 import avatarImg from "@/assets/avatar.png";
 
 const Index = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
       <div className="w-full max-w-lg space-y-8">
