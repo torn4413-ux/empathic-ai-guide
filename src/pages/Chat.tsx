@@ -81,10 +81,17 @@ const Chat = () => {
         <div className="h-9 w-9 overflow-hidden rounded-full border-2 border-secondary">
           <img src={avatarImg} alt="Dr. Maya" className="h-full w-full object-cover" />
         </div>
-        <div>
+        <div className="flex-1">
           <p className="text-sm font-semibold text-foreground">Dr. Maya</p>
           <p className="text-xs text-muted-foreground">AI თანამგზავრი</p>
         </div>
+        <button
+          onClick={handleLogout}
+          className="text-muted-foreground hover:text-foreground transition-colors"
+          title="გასვლა"
+        >
+          <LogOut className="h-5 w-5" />
+        </button>
       </header>
 
       {/* Messages */}
