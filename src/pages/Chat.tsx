@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, ArrowLeft } from "lucide-react";
+import { Send, ArrowLeft, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { streamChat } from "@/lib/chatStream";
 import { toast } from "sonner";
+import { useAuth } from "@/contexts/AuthContext";
 import avatarImg from "@/assets/avatar.png";
 
 type Msg = { role: "user" | "assistant"; content: string };
