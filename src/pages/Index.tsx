@@ -57,7 +57,7 @@ const Index = () => {
         </div>
 
         {/* CTA Button */}
-        <Button className="w-full py-6 text-lg font-semibold" size="lg" onClick={() => navigate("/chat")}>
+        <Button className="w-full py-6 text-lg font-semibold" size="lg" onClick={() => navigate("/login")}>
           დაიწყე მოგზაურობა
         </Button>
       </div>
