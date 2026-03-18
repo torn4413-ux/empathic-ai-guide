@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var l = window.location;
+        var base = "/empathic-ai-guide";
+        var newUrl =
+          l.origin +
+          base +
+          "/?p=" +
+          encodeURIComponent(l.pathname.slice(base.length)) +
+          "&q=" +
+          encodeURIComponent(l.search.slice(1)) +
+          l.hash;
+
+        window.location.replace(newUrl);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
