@@ -2,6 +2,7 @@
 
 import { createLovableAuth } from "@lovable.dev/cloud-auth-js";
 import { supabase } from "../supabase/client";
+
 const lovableAuth = createLovableAuth();
 
 type SignInOptions = {
@@ -11,18 +12,25 @@ type SignInOptions = {
 
 export const lovable = {
   auth: {
-    signInWithOAuth: async (provider: "google" | "apple", opts?: SignInOptions) => {
+    signInWithOAuth: async (
+      provider: "google" | "apple",
+      opts?: SignInOptions
+    ) => {
       const result = await lovableAuth.signInWithOAuth(provider, {
-        redirect_uri: opts?.redirect_uri,
+        redirect_uri:
+          opts?.redirect_uri ??
+          `${window.location.origin}${import.meta.env.BASE_URL}auth/callback`,
         extraParams: {
           ...opts?.extraParams,
         },
       });
 
+      // თუ უკვე redirect მოხდა — უბრალოდ დააბრუნე
       if (result.redirected) {
         return result;
       }
 
+      // ❗ აქ იყო შეცდომა — ახლა გასწორებულია
       if (result.error) {
         return result;
       }
@@ -32,6 +40,7 @@ export const lovable = {
       } catch (e) {
         return { error: e instanceof Error ? e : new Error(String(e)) };
       }
+
       return result;
     },
   },
